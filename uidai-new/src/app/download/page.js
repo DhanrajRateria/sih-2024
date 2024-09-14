@@ -1,8 +1,7 @@
 'use client'
-// src/app/download/page.js or src/pages/download.js
+// src/app/download/page.js
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import Image from 'next/image';
 import styles from './download.module.css';
 
 const throttle = (func, delay) => {
@@ -128,51 +127,35 @@ const InteractionCapture = () => {
       alert('Please interact with the page to verify you are a human.');
     }
   };  
-    
+
   return (
-    <div className='interaction-page'>
+    <div className={styles.interactionPage}>
       <header className={styles.header}>
         <div className={styles.titleSection}>
+          <h1 className={styles.title}>eAadhaar Download</h1>
         </div>
       </header>
 
-      <nav className={styles.navbar}>
-        <div className={styles.navLeft}>
-          <span className={styles.myAadhaarLabel}>myAadhaar</span>
-        </div>
-        <div className={styles.navRight}>
-          <div className={styles.languageDropdown}>
-            <button className={styles.dropbtn}>English ▼</button>
-            <div className={styles.dropdownContent}>
-              <a href="#">English</a>
-              <a href="#">हिन्दी</a>
-              <a href="#">বাংলা</a>
-              {/* Add more language options here */}
-            </div>
-          </div>
-        </div>
-      </nav>
-
       <div className={styles.mainContainer}>
         <div className={styles.formSection}>
-          <h2>eAadhaar Download</h2>
           <form id="aadhaar-form">
-            <p>Select 12 digit Aadhaar Number / 16 digit Virtual ID (VID) Number / 28 digit Enrollment ID (EID) Number</p>
-            <label>
-              <input type="radio" name="id-type" value="aadhaar" defaultChecked /> Aadhaar Number
-            </label>
-            <label>
-              <input type="radio" name="id-type" value="enrollment" /> Enrollment ID Number
-            </label>
-            <label>
-              <input type="radio" name="id-type" value="virtual" /> Virtual ID Number
-            </label>
+            <p className={styles.instructions}>Select 12 digit Aadhaar Number / 16 digit Virtual ID (VID) Number / 28 digit Enrollment ID (EID) Number</p>
+            <div className={styles.radioGroup}>
+              <label className={styles.radioLabel}>
+                <input type="radio" name="id-type" value="aadhaar" defaultChecked /> Aadhaar Number
+              </label>
+              <label className={styles.radioLabel}>
+                <input type="radio" name="id-type" value="enrollment" /> Enrollment ID Number
+              </label>
+              <label className={styles.radioLabel}>
+                <input type="radio" name="id-type" value="virtual" /> Virtual ID Number
+              </label>
+            </div>
 
             <div className={styles.inputGroup}>
               <input type="text" id="aadhaar-number" placeholder="Enter Aadhaar Number" required />
             </div>
 
-            {/* Apply the local button class */}
             <button type="button" className={styles.button} onClick={showOtpSection}>Send OTP</button>
 
             {showOtp && (
@@ -184,7 +167,6 @@ const InteractionCapture = () => {
                 <div className={styles.errorMessage}>
                   <span className={styles.errorIcon}>⚠</span> This is a required field and valid data to be entered.
                 </div>
-                {/* Apply the specific button class for submit */}
                 <button type="submit" className={styles.buttonSubmit}>Verify & Download</button>
               </div>
             )}
@@ -192,8 +174,8 @@ const InteractionCapture = () => {
         </div>
 
         <div className={styles.faqSection}>
-          <h3>Frequently Asked Questions</h3>
-          <ul>
+          <h3 className={styles.faqTitle}>Frequently Asked Questions</h3>
+          <ul className={styles.faqList}>
             <li>What is e-Aadhaar?</li>
             <li>Is e-Aadhaar equally valid like physical copy of Aadhaar?</li>
             <li>What is Masked Aadhaar?</li>
@@ -207,6 +189,5 @@ const InteractionCapture = () => {
     </div>
   );
 };
-  
 
 export default InteractionCapture;

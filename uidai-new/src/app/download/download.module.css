@@ -1,193 +1,152 @@
-download.module.css
+/* download.module.css */
 
-body {
+.interactionPage {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
-    margin: 0;
     padding: 0;
-}
-
-.header {
-    background-color: white;
-    color: black;
-    padding: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.header .emblem {
-    width: 50px;
-}
-
-.header .titleSection {
-    display: flex;
-    align-items: center;
-}
-
-.header h1 {
     margin: 0;
+  }
+  
+  .header {
+    background-color: #ffffff;
+    padding: 20px;
     text-align: center;
-}
-
-.header .aadhaarLogo {
-    width: 100px;
-}
-
-.navbar {
-    background: linear-gradient(to right, #002f6c, #005a9e, #007bff);
-    padding: 10px 20px;
+  }
+  
+  .titleSection {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    color: white;
-}
-
-.navLeft {
-    display: flex;
-    align-items: center;
-}
-
-.myAadhaarLabel {
-    font-size: 20px;
-    font-weight: bold;
-}
-
-.navRight {
-    display: flex;
-    align-items: center;
-}
-
-.languageDropdown {
-    position: relative;
-    display: inline-block;
-}
-
-.dropbtn {
-    background-color: #005a9e;
-    color: white;
-    padding: 8px 16px;
-    font-size: 16px;
-    border: none;
-    cursor: pointer;
-    border-radius: 4px;
-}
-
-.dropbtn:hover,
-.dropbtn:focus {
-    background-color: #004080;
-}
-
-.dropdownContent {
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-    z-index: 1;
-    border-radius: 4px;
-}
-
-.dropdownContent a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-    border-bottom: 1px solid #ddd;
-}
-
-.dropdownContent a:hover {
-    background-color: #f1f1f1;
-}
-
-.languageDropdown:hover .dropdownContent {
-    display: block;
-}
-
-.mainContainer {
-    display: flex;
-    justify-content: space-between;
-    padding: 20px;
-}
-
-.formSection {
-    background-color: white;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 60%;
-}
-
-.faqSection {
-    background-color: white;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 30%;
-}
-
-.formSection h2,
-.faqSection h3 {
+  }
+  
+  .title {
     color: #005a9e;
-}
-
-.inputGroup {
-    margin: 15px 0;
-}
-
-.inputGroup input {
+    font-size: 28px;
+    margin: 0;
+  }
+  
+  .mainContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 20px;
+  }
+  
+  .formSection {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 5px;
     width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-.button {
-    background-color: #005a9e;
-    color: white;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+    max-width: 65%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .instructions {
+    color: #005a9e;
     font-size: 16px;
+    margin-bottom: 15px;
+  }
+  
+  .radioGroup {
+    margin-bottom: 15px;
+  }
+  
+  .radioLabel {
+    display: block;
+    margin-bottom: 5px;
+    color: #000000;
+    font-weight: bold;
+  }
+  
+  .inputGroup {
+    margin-bottom: 15px;
+  }
+  
+  .inputGroup input {
     width: 100%;
-}
-
-.button:hover {
-    background-color: #004080;
-}
-
-.faqSection ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-.faqSection ul li {
     padding: 10px;
-    border-bottom: 1px solid #ccc;
+    border: 1px solid #005a9e;
+    border-radius: 4px;
+  }
+  
+  .button {
+    background-color: #005a9e;
+    color: #ffffff;
+    border: none;
+    padding: 12px 20px;
+    font-size: 16px;
     cursor: pointer;
-}
-
-.faqSection ul li:hover {
-    background-color: #f9f9f9;
-}
-
-.otpSection {
+    border-radius: 4px;
+    width: 100%;
+  }
+  
+  .button:hover {
+    background-color: #004080;
+  }
+  
+  .otpSection {
     margin-top: 20px;
-    background-color: #f9f9f9;
+    background-color: #e9f0f7;
     padding: 15px;
     border-radius: 4px;
-    border: 1px solid #ccc;
-}
-
-.errorMessage {
+    border: 1px solid #005a9e;
+  }
+  
+  .errorMessage {
     color: red;
     font-size: 14px;
     display: flex;
     align-items: center;
-    margin-bottom: 10px;
-}
-
-.errorIcon {
+    margin-top: 10px;
+  }
+  
+  .errorIcon {
     margin-right: 5px;
-}
+  }
+  
+  .buttonSubmit {
+    background-color: #28a745;
+    color: #ffffff;
+    border: none;
+    padding: 12px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+    width: 100%;
+    margin-top: 10px;
+  }
+  
+  .buttonSubmit:hover {
+    background-color: #218838;
+  }
+  
+  .faqSection {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 5px;
+    width: 100%;
+    max-width: 30%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .faqTitle {
+    color: #005a9e;
+    font-size: 22px;
+    margin-bottom: 15px;
+  }
+  
+  .faqList {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .faqList li {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    color: #000000;
+  }
+  
+  .faqList li:hover {
+    background-color: #f9f9f9;
+    cursor: pointer;
+  }  
