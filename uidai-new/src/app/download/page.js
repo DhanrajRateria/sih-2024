@@ -1,6 +1,6 @@
 'use client'
 // src/app/download/page.js
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import styles from './download.module.css';
 
@@ -117,6 +117,18 @@ const InteractionCapture = () => {
   }, [interactionData]);
 
   const [showOtp, setShowOtp] = useState(false);
+  const [showSecurityQuestion, setShowSecurityQuestion] = useState(false);
+  const [securityQuestion, setSecurityQuestion] = useState('');
+  const [userAnswer, setUserAnswer] = useState('');
+  const correctAnswerRef = useRef(null);
+
+  const generateSecurityQuestion = () => {
+    // Generate a simple math question
+    const num1 = Math.floor(Math.random() * 10) + 1; // Random number between 1 and 10
+    const num2 = Math.floor(Math.random() * 10) + 1;
+    setSecurityQuestion(`What is ${num1} + ${num2}?`);
+    correctAnswerRef.current = num1 + num2; // Store the correct answer
+  };
 
   const showOtpSection = () => {
     // Check if the user has moved the mouse enough times to be considered a human
@@ -124,9 +136,22 @@ const InteractionCapture = () => {
       setShowOtp(true);
       alert('Verified as human');
     } else {
-      alert('Please interact with the page to verify you are a human.');
+      // If not verified, show security question
+      generateSecurityQuestion();
+      setShowSecurityQuestion(true);
     }
-  };  
+  };
+
+  const handleSecurityQuestionSubmit = (e) => {
+    e.preventDefault();
+    if (parseInt(userAnswer) === correctAnswerRef.current) {
+      setShowOtp(true);
+      setShowSecurityQuestion(false);
+      alert('Security question answered correctly. Verified as human.');
+    } else {
+      alert('Incorrect answer. Please try again.');
+    }
+  };
 
   return (
     <div className={styles.interactionPage}>
@@ -139,7 +164,9 @@ const InteractionCapture = () => {
       <div className={styles.mainContainer}>
         <div className={styles.formSection}>
           <form id="aadhaar-form">
-            <p className={styles.instructions}>Select 12 digit Aadhaar Number / 16 digit Virtual ID (VID) Number / 28 digit Enrollment ID (EID) Number</p>
+            <p className={styles.instructions}>
+              Select 12 digit Aadhaar Number / 16 digit Virtual ID (VID) Number / 28 digit Enrollment ID (EID) Number
+            </p>
             <div className={styles.radioGroup}>
               <label className={styles.radioLabel}>
                 <input type="radio" name="id-type" value="aadhaar" defaultChecked /> Aadhaar Number
@@ -157,6 +184,26 @@ const InteractionCapture = () => {
             </div>
 
             <button type="button" className={styles.button} onClick={showOtpSection}>Send OTP</button>
+
+            {showSecurityQuestion && (
+              <div className={styles.securityQuestionSection}>
+                <form onSubmit={handleSecurityQuestionSubmit}>
+                  <div className={styles.inputGroup}>
+                    <label htmlFor="security-question">Security Question:</label>
+                    <p>{securityQuestion}</p>
+                    <input
+                      type="text"
+                      id="security-question-answer"
+                      placeholder="Your Answer"
+                      value={userAnswer}
+                      onChange={(e) => setUserAnswer(e.target.value)}
+                      required
+                    />
+                  </div>
+                  <button type="submit" className={styles.button}>Submit Answer</button>
+                </form>
+              </div>
+            )}
 
             {showOtp && (
               <div className={styles.otpSection}>
