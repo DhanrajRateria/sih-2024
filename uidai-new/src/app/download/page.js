@@ -137,6 +137,7 @@ const InteractionCapture = () => {
       alert('Verified as human');
     } else {
       // If not verified, show security question
+      alert('Could not verify as human. Please answer the security question.');
       generateSecurityQuestion();
       setShowSecurityQuestion(true);
     }
